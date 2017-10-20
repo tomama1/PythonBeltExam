@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+    <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+            #header{
+                border: 1px solid black;
+                padding: 10px 10px 10px 10px;
+            }
+            #header>h1{
+                display: inline-block;
+            }
+            #navbar{
+                display: inline-block;
+                float:right;
+                margin-right: 30px;
+                font-size: 15px;
+                line-height: 40px;
+            }
+            #navbar>a{
+                margin-right: 10px;
+            }
+            </style>
+</head>
+<body>
+        <div id="header">
+            <h1>{{trip.destination}}</h1>
+                <div id="navbar">
+                    <a href="/travels">Home</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+    <table>
+        <tr><td>Planned By: {{trip.creater.firstname}} {{trip.creater.lastname}}</td></tr>
+        <tr><td>Description: {{trip.plan}}</td></tr>
+        <tr><td>Travel Date From: {{trip.startDate}}</td></tr>
+        <tr><td>Travel Date To: {{trip.endDate}}</td></tr>
+
+    </table>
+
+    <table>
+            <tr><td><h2>Other users' joining the trip:</h2></td></tr>
+            {% for user in otherUsers %}
+            <tr><td>{{user.firstname}} {{user.lastname}}</td></tr>
+            {% endfor %}
+    
+    </table>
+    <h1></h1>
+
+    
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add</title>
+    <style>
+        * {padding: 0px;
+        margin: 0px;
+        }
+        
+        .error{
+            color: red;
+            font-size: 18px;
+        }
+
+        #header{
+            border: 1px solid black;
+            padding: 10px 10px 10px 10px;
+        }
+        #header>h1{
+            display: inline-block;
+        }
+        #navbar{
+            display: inline-block;
+            float:right;
+            margin-right: 30px;
+            font-size: 15px;
+            line-height: 40px;
+        }
+        #navbar>a{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+        <div id="header">
+                <h1>Add a Trip</h1>
+                <div id="navbar">
+                    <a href="/travels">Home</a>
+                    <a href="/logout">Logout</a>
+                </div>
+        </div>
+
+
+    <form method="post" action="/travels/addprocess">
+        {% csrf_token %}
+    <table>
+            {% if messages %}
+            {% for message in messages %}
+                    <tr><td class="error">{{ message }}</td></tr>
+            {% endfor %}
+        {% endif %}
+        <tr>
+            <td>Destination</td>
+            <td><input type="text" name="destination"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" name="plan"></td>
+        </tr>
+        <tr>
+            <td colspan="2"> Please input date in YYYY-MM-DD format</td>
+        </tr>
+        <tr>
+            <td>Travel Date From:</td>
+            <td><input type="text" name="startdate"></td>
+        </tr>
+        <tr>
+            <td>Travel Date To:</td>
+            <td><input type="text" name="enddate"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Add"></td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
